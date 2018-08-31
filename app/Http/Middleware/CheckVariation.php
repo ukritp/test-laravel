@@ -24,7 +24,6 @@ class CheckVariation
     public function handle($request, Closure $next)
     {   
         $environment = env('APP_ENV');
-        // $userId = '';
 
         $url['dev'] = 'https://cdn.optimizely.com/datafiles/3Qk9ptHUUq82E8oeJgDUDN.json';
         $url['staging'] = 'https://cdn.optimizely.com/datafiles/Pqr1KagfVi7p4J7RLmhwx1.json';
@@ -59,8 +58,10 @@ class CheckVariation
 
         // Get variation
         $variation = $optimizelyClient->activate('test_laravel', $userId);
+        // dd($variation);
 
-        dd($variation);
+        // Add variation into request
+        $request->attributes->add(['variation' => $variation] );
 
         return $next($request);
     }
