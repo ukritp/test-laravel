@@ -8,18 +8,13 @@
                 <div class="card-header">Variation</div>
 
                 <div class="card-body">
-                    <?php 
-                        if ($variation == 'control') {
-                            // execute code for control
-                            echo 'control';
-                        } else if ($variation == 'varA') {
-                            // execute code for varA
-                            echo 'varA';
-                        } else {
-                            // execute default code
-                            echo 'default';
-                        }
-                    ?>
+                    @if ($variation === 'control')
+                        <div>Control</div>
+                    @elseif ($variation === 'varA')
+                        <div>Var A</div>
+                    @else
+                        <div>Default</div>
+                    @endif
                 </div>
             </div>
         </div>
